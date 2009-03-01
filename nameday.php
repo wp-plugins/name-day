@@ -42,6 +42,43 @@ function tz_nameday_page()
   {
   global $wpdb,$DB;
   
+          global $wpdb;
+
+	
+        $DB_PREFIX=$wpdb->prefix;
+        $table=$DB_PREFIX."z_namedays";
+      
+        if($wpdb->get_var("show tables like '$table'") != $table) {
+
+                $sql = "CREATE TABLE ".$table." ( day int(11) NOT NULL, month int(11) NOT NULL, names varchar(100) NOT NULL, special varchar(30), flagday char(1) DEFAULT 'N' NOT NULL, lang varchar(2) NOT NULL, PRIMARY KEY (day,month,lang));";
+                
+                
+               
+    
+                require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
+                dbDelta($sql);
+                
+         define('NGCOOKIMGLIST_URLPATH', WP_CONTENT_URL.'/plugins/'.plugin_basename( dirname(__FILE__)) );
+	     $plugin_dir = NGCOOKIMGLIST_URLPATH;
+
+		 $myFile = $plugin_dir."/namedays.import";
+
+			$fh = fopen($myFile, 'r');
+			#while (!feof($fh)) {
+			#  $theData .= fread($fh, 8192);
+			#}
+			#fclose($fh);
+
+			if ($fh) {
+ 			   while (!feof($fh)) {
+  			      $buffer = fgets($fh, 4096);
+					$q=explode("|",$buffer);
+    			   $query="insert into $table values($q[0],$q[1],'$q[2]','$q[3]','$q[4]','$q[5]');";
+    			   $wpdb->query($query);
+ 			}       
+  
+    		fclose($fh);
+}}
   
 #Checks for valid languages
 $query = "select distinct(lang) from $DB order by lang";
@@ -204,6 +241,7 @@ function nameday_install () {
 	
         $DB_PREFIX=$wpdb->prefix;
         $table=$DB_PREFIX."z_namedays";
+        echo "APAPA";
         if($wpdb->get_var("show tables like '$table'") != $table) {
 
                 $sql = "CREATE TABLE ".$table." ( day int(11) NOT NULL, month int(11) NOT NULL, names varchar(100) NOT NULL, special varchar(30), flagday char(1) DEFAULT 'N' NOT NULL, lang varchar(2) NOT NULL, PRIMARY KEY (day,month,lang));";
