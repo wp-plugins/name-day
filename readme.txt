@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: thomaz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3625309
-Tags: nameday, namnsdag
+Tags: nameday, namnsdag, posts
 Requires at least: 2.7.0
 Tested up to: 2.7.1
 Stable tag: 0.5
@@ -17,7 +17,7 @@ Prints the current nameday (namnsdag in swedish)
 == Currently only Swedish Name days =
 
 * If you have a commasepareted file for namedays for your country, please
-* contact be and I will add it.
+* contact me and I will add it.
 
 
 == Installation ==
@@ -26,7 +26,7 @@ Prints the current nameday (namnsdag in swedish)
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Edit your theme's php files and insert the following code where you want the name to appear
 
-   <?php if (function_exists('print_nameday')) { print_nameday(); } ?>
+    if (function_exists('print_nameday')) { print_nameday(); } 
 
 
 == Frequently Asked Questions ==
