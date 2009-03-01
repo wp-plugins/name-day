@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Name Day
-Description: Name Day, prints the name day (Swedish namnsdag).
-Version: 0.11
+Description: Name Day, prints the name day (Swedish namnsdag). See the readme for how to configure.
+Version: 0.12
 Author: Thomas Lindholm
 Plugin URI: http://www.liajnad.se/nameday
 Author URI: http://www.liajnad.se
@@ -58,8 +58,8 @@ function tz_nameday_page()
                 require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
                 dbDelta($sql);
                 
-         define('NGCOOKIMGLIST_URLPATH', WP_CONTENT_URL.'/plugins/'.plugin_basename( dirname(__FILE__)) );
-	     $plugin_dir = NGCOOKIMGLIST_URLPATH;
+         define('PLUG_URLPATH', WP_CONTENT_URL.'/plugins/'.plugin_basename( dirname(__FILE__)) );
+	     $plugin_dir = PLUG_URLPATH;
 
 		 $myFile = $plugin_dir."/namedays.import";
 
@@ -112,9 +112,11 @@ if($err) { echo "Load failed: " . $query . "<BR>" . $err; }
 		Please select which calendar to use (Currently only swedish installed by default).
 		</p>
 	</div>
-		
+	
 		<?php
-	  if (isset($_POST['submit'])) {
+// Lets save the data....
+
+	if (isset($_POST['submit'])) {
 		  // let's rock and roll
 		  
 
@@ -140,6 +142,14 @@ if($err) { echo "Load failed: " . $query . "<BR>" . $err; }
 				$a['bypass-xml'] = 0;
 			}
 			
+			if (isset($_POST['nameday_pre'])) {
+			$a['nameday_pre'] = $_POST['nameday_pre']; 
+			}
+			
+			if (isset($_POST['nameday_post'])) {
+			$a['nameday_post'] = $_POST['nameday_post']; 
+			}
+			
 			
 		if (isset($_POST['nameday_lang'])) {
 			$a['nameday_lang'] = $_POST['nameday_lang']; 
@@ -153,12 +163,12 @@ if($err) { echo "Load failed: " . $query . "<BR>" . $err; }
 				$v = unserialize($v);
 			}
 			
-				if (!isset($v['bypass-rss'])) {
-			$v['bypass-rss'] = 0;
+				if (!isset($v['nameday_pre'])) {
+			$v['apa'] = 0;
 			}	
 			
-				if (!isset($v['bypass-xml'])) {
-			$v['bypass-xml'] = 0;
+				if (!isset($v['nameday_post'])) {
+			$v['apa'] = 0;
 			}	
 			
 			?>
@@ -179,12 +189,22 @@ if($err) { echo "Load failed: " . $query . "<BR>" . $err; }
                                 }
                         echo "</select>";
                         
-                     
+                 
 			
 	
             
    
 ?>
+<br /><br />
+<div>If you want any special html code or other text to appear before and after the list of names use this fields.</div>
+<div >Pre<small> ([&lt;font color=blue>)</small></div>
+		<div >&nbsp; <input text="text" size="20" name="nameday_pre" type="text" value="<?php $str = $v['nameday_pre']; echo stripslashes($str); ?>" /></div>
+
+	<div >Post<small> (&lt;/font>])</small></div>
+		<div >&nbsp; <input text="text" size="20" name="nameday_post" type="text" value="<?php $str = $v['nameday_post']; echo stripslashes($str); ?>" /></div>
+<br /><br /
+
+
  <input type="submit" name="submit" value="submit" id="blocker-button"/>
 </form>
 <?
@@ -219,12 +239,19 @@ return $res[0];
 
 }
 
+/// This is the actual printout
 function print_nameday()
 {
+  global $wpdb,$DB;
+
+  $v = get_option('tz_nameday');
+  if (!is_array($v)) {
+				$v = unserialize($v);
+			}
   $day=get_the_time('d');
   $month=get_the_time('m');
   if (!isset($day)) return;
-  echo "[".get_nameday($day, $month)."]";
+  echo $v[nameday_pre]."".get_nameday($day, $month)."".$v[nameday_post];
   #echo "Disabled";
 }
 
@@ -252,8 +279,8 @@ function nameday_install () {
                 require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
                 dbDelta($sql);
                 
-         define('NGCOOKIMGLIST_URLPATH', WP_CONTENT_URL.'/plugins/'.plugin_basename( dirname(__FILE__)) );
-	     $plugin_dir = NGCOOKIMGLIST_URLPATH;
+         define('PLUG_URLPATH', WP_CONTENT_URL.'/plugins/'.plugin_basename( dirname(__FILE__)) );
+	     $plugin_dir = PLUG_URLPATH;
 
 		 $myFile = $plugin_dir."/namedays.import";
 

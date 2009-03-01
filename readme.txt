@@ -24,9 +24,11 @@ Prints the current nameday (namnsdag in swedish)
 
 1. Upload plugin to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Edit your theme's php files and insert the following code where you want the name to appear
+3. Configure the plugin throuh the settings page. (Language & Pre/Post text)
+4. Edit your theme's php files and insert the following code where you want the name to appear.
+   Please note that code isnt shown on the wordpress.org site, but is visible in your plugins readme file.
 
-    if (function_exists('print_nameday')) { print_nameday(); } 
+    <? if (function_exists('print_nameday')) { print_nameday(); } ?>
 
 
 == Frequently Asked Questions ==
