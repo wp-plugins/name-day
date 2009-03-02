@@ -8,7 +8,7 @@ Stable tag: 0.5
 
 Print the current name day.
 
-Support for the Swedish name Calendar.
+Currenly only support for the Swedish name Calendar.
 
 == Description ==
 
@@ -24,9 +24,11 @@ Prints the current nameday (namnsdag in swedish)
 
 1. Upload plugin to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Edit your theme's php files and insert the following code where you want the name to appear
+3. Configure the plugin throuh the settings page. (Language & Pre/Post text)
+4. Edit your theme's php files and insert the following code where you want the name to appear.
+   
 
-    if (function_exists('print_nameday')) { print_nameday(); } 
+    &lt;php? if (function_exists('print_nameday')) { print_nameday(); } ?&gt;
 
 
 == Frequently Asked Questions ==
