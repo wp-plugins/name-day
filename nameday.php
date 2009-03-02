@@ -204,12 +204,12 @@ if($err) { echo "Load failed: " . $query . "<BR>" . $err; }
 		<div >&nbsp; <input text="text" size="20" name="nameday_post" type="text" value="<?php $str = $v['nameday_post']; echo stripslashes($str); ?>" /></div>
 <br /><br /
 
-
+<div><? 		echo "<br>Example: ".$v['nameday_pre']."Kalle, Peter".$v['nameday_post']."<br>"; ?></div>
  <input type="submit" name="submit" value="submit" id="blocker-button"/>
 </form>
 <?
 
-			
+
 }
 
 
