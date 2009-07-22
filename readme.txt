@@ -3,7 +3,7 @@ Contributors: thomaz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3625309
 Tags: nameday, namnsdag, posts
 Requires at least: 2.7.0
-Tested up to: 2.8
+Tested up to: 2.8.2
 Stable tag: trunk
 
 Print the current name day.
