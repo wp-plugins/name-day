@@ -14,6 +14,9 @@ Currenly only support for the Swedish name Calendar.
 
 Prints the current nameday (namnsdag in swedish)
 
+Change history: Version 1.0.1 
+Removed dependencies to pluggable.php
+
 == Currently only Swedish Name days =
 
 * If you have a commasepareted file for namedays for your country, please
