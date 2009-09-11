@@ -3,8 +3,8 @@ Contributors: thomaz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3625309
 Tags: nameday, namnsdag, posts
 Requires at least: 2.7.0
-Tested up to: 2.7.1
-Stable tag: 0.5
+Tested up to: 2.8.4
+Stable tag: trunk
 
 Print the current name day.
 
@@ -13,6 +13,9 @@ Currenly only support for the Swedish name Calendar.
 == Description ==
 
 Prints the current nameday (namnsdag in swedish)
+
+Change history: Version 1.0.1 
+Removed dependencies to pluggable.php
 
 == Currently only Swedish Name days =
 

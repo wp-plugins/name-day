@@ -2,7 +2,7 @@
 /*
 Plugin Name: Name Day
 Description: Name Day, prints the name day (Swedish namnsdag). See the readme for how to configure.
-Version: 0.2.0
+Version: 1.0.0
 Author: Thomas L
 Plugin URI: http://www.liajnad.se/nameday
 Author URI: http://www.liajnad.se
@@ -25,7 +25,7 @@ Author URI: http://www.liajnad.se
 require_once(ABSPATH . 'wp-includes/streams.php');
 require_once(ABSPATH . 'wp-includes/gettext.php');
 
-require_once(ABSPATH . 'wp-includes/pluggable.php');
+# require_once(ABSPATH . 'wp-includes/pluggable.php');
 
 
 $DB_PREFIX=$wpdb->prefix;
@@ -204,7 +204,7 @@ if($err) { echo "Load failed: " . $query . "<BR>" . $err; }
 		<div >&nbsp; <input text="text" size="20" name="nameday_post" type="text" value="<?php $str = $v['nameday_post']; echo stripslashes($str); ?>" /></div>
 <br /><br /
 
-<div><? 		echo "<br>Example: ".$v['nameday_pre']."Kalle, Peter".$v['nameday_post']."<br>"; ?></div>
+<div><? 		echo "<br>Example: ".$v['nameday_pre']."Mary, Peter".$v['nameday_post']."<br>"; ?></div>
  <input type="submit" name="submit" value="submit" id="blocker-button"/>
 </form>
 <?
