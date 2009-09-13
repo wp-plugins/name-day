@@ -2,7 +2,7 @@
 /*
 Plugin Name: Name Day
 Description: Name Day, prints the name day (Swedish namnsdag). See the readme for how to configure.
-Version: 0.2.0
+Version: 1.0.1
 Author: Thomas L
 Plugin URI: http://www.liajnad.se/nameday
 Author URI: http://www.liajnad.se
@@ -25,7 +25,7 @@ Author URI: http://www.liajnad.se
 require_once(ABSPATH . 'wp-includes/streams.php');
 require_once(ABSPATH . 'wp-includes/gettext.php');
 
-require_once(ABSPATH . 'wp-includes/pluggable.php');
+# require_once(ABSPATH . 'wp-includes/pluggable.php');
 
 
 $DB_PREFIX=$wpdb->prefix;
@@ -204,7 +204,7 @@ if($err) { echo "Load failed: " . $query . "<BR>" . $err; }
 		<div >&nbsp; <input text="text" size="20" name="nameday_post" type="text" value="<?php $str = $v['nameday_post']; echo stripslashes($str); ?>" /></div>
 <br /><br /
 
-<div><? 		echo "<br>Example: ".$v['nameday_pre']."Kalle, Peter".$v['nameday_post']."<br>"; ?></div>
+<div><? 		echo "<br>Example: ".$v['nameday_pre']."Mary, Peter".$v['nameday_post']."<br>"; ?></div>
  <input type="submit" name="submit" value="submit" id="blocker-button"/>
 </form>
 <?
@@ -261,14 +261,16 @@ function tz_nameday_options_menu() {
 
 
 //function to create the table on plugin activation
-add_action('activate_nameday/nameday.php','nameday_install');
+// add_action('activate_nameday/nameday.php','nameday_install');
 function nameday_install () {
         global $wpdb;
 
 	
         $DB_PREFIX=$wpdb->prefix;
         $table=$DB_PREFIX."z_namedays";
-        echo "APAPA";
+	
+        $query="drop table $table;";
+    	$wpdb->query($query);
         if($wpdb->get_var("show tables like '$table'") != $table) {
 
                 $sql = "CREATE TABLE ".$table." ( day int(11) NOT NULL, month int(11) NOT NULL, names varchar(100) NOT NULL, special varchar(30), flagday char(1) DEFAULT 'N' NOT NULL, lang varchar(2) NOT NULL, PRIMARY KEY (day,month,lang));";
@@ -323,6 +325,7 @@ function tz_nameday_plugin_actions($links, $file){
 add_filter('init', 'tz_nameday_init');
 
 add_action('admin_menu', 'tz_nameday_options_menu'); 
+register_activation_hook( __FILE__, 'nameday_install' );
 
 
 
