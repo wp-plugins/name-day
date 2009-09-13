@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: nameday, namnsdag, posts
 Requires at least: 2.7.0
 Tested up to: 2.8.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 Print the current name day.
 
