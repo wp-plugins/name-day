@@ -7,7 +7,9 @@ Tested up to: 2.8.4
 Stable tag: 1.0.2
 
 
-**== Description ==**
+Print the current name day.
+
+== Description ==
 Print the current name day.
 Currenly supports Namedays for Sweden (Namnsdagar), Norway (Navnedager) & Denmark (Navnedager) 
 
