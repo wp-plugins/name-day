@@ -6,21 +6,16 @@ Requires at least: 2.7.0
 Tested up to: 2.8.4
 Stable tag: 1.0.2
 
-Print the current name day.
 
+**== Description ==**
+Print the current name day.
 Currenly supports Namedays for Sweden (Namnsdagar), Norway (Navnedager) & Denmark (Navnedager) 
 
-== Description ==
-
-Prints the current nameday (namnsdag in swedish)
 
 Change history: 
 
-1.0.1 
-Removed dependencies to pluggable.php
-
-1.0.2 
-Added support for Danish and Norwegian namedays
+1.0.1 Removed dependencies to pluggable.php
+1.0.2 Added support for Danish and Norwegian namedays
 
 
 == Missing country? =
