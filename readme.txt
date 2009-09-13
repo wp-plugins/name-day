@@ -37,7 +37,7 @@ Added support for Danish and Norwegian namedays
 4. Edit your theme's php files and insert the following code where you want the name to appear.
    
 
-<pre><code>    &lt;php? if (function_exists('print_nameday')) { print_nameday(); } ?&gt; </pre></code>
+<pre><code>    &lt;php? if (function_exists('print_nameday')) { print_nameday(); } ?&gt; </code></pre>
 
 
 == Frequently Asked Questions ==
