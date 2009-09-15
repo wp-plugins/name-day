@@ -109,7 +109,7 @@ if($err) { echo "Load failed: " . $query . "<BR>" . $err; }
 	<div >
 	<h2>Name Day plugin Setttings</h2>
 		<p>
-		Please select which calendar to use (Currently only swedish installed by default).
+		Please select which calendar to use.
 		</p>
 	</div>
 	

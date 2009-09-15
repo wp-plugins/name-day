@@ -16,12 +16,6 @@ Print the current name day.
 Currenly supports Namedays for Sweden (Namnsdagar), Norway (Navnedager) & Denmark (Navnedager) 
 
 
-Change history: 
-
-1.0.1 Removed dependencies to pluggable.php
-
-1.0.2 Added support for Danish and Norwegian namedays
-
 
 == Missing country? =
 
@@ -48,4 +42,16 @@ Yes, just send me a datafile
 
 
 
+== Screenshots ==
+
+1. Settings page
+2. Appearance in blog
+
+== Changelog ==
+
+= 1.0.2 =
+1.0.2 Added support for Danish and Norwegian namedays
+
+= 1.0.1 =
+Removed dependencies to pluggable.php, which casued compat. problems.
 
