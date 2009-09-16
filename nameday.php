@@ -2,7 +2,7 @@
 /*
 Plugin Name: Name Day
 Description: Name Day, prints the name day (Swedish namnsdag). See the readme for how to configure.
-Version: 1.0.1
+Version: 1.0.3
 Author: Thomas L
 Plugin URI: http://www.liajnad.se/nameday
 Author URI: http://www.liajnad.se
@@ -25,8 +25,6 @@ Author URI: http://www.liajnad.se
 require_once(ABSPATH . 'wp-includes/streams.php');
 require_once(ABSPATH . 'wp-includes/gettext.php');
 
-# require_once(ABSPATH . 'wp-includes/pluggable.php');
-
 
 $DB_PREFIX=$wpdb->prefix;
 $DB=$DB_PREFIX."z_namedays";
@@ -38,54 +36,43 @@ function tz_nameday_init() {
 	}
 }
 
+
 function tz_nameday_page()
   {
   global $wpdb,$DB;
-  
-          global $wpdb;
-
-	
-        $DB_PREFIX=$wpdb->prefix;
-        $table=$DB_PREFIX."z_namedays";
-      
-        if($wpdb->get_var("show tables like '$table'") != $table) {
-
-                $sql = "CREATE TABLE ".$table." ( day int(11) NOT NULL, month int(11) NOT NULL, names varchar(100) NOT NULL, special varchar(30), flagday char(1) DEFAULT 'N' NOT NULL, lang varchar(2) NOT NULL, PRIMARY KEY (day,month,lang));";
+       
+  $DB_PREFIX=$wpdb->prefix;
+  $table=$DB_PREFIX."z_namedays";
+     
+  // Check if Table exists 
+  if($wpdb->get_var("show tables like '$table'") != $table) 
+	{
+             $sql = "CREATE TABLE ".$table." ( day int(11) NOT NULL, month int(11) NOT NULL, names varchar(100) NOT NULL, special varchar(30), flagday char(1) DEFAULT 'N' NOT NULL, lang varchar(2) NOT NULL, PRIMARY KEY (day,month,lang));";
+             require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
+             dbDelta($sql);
                 
-                
-               
-    
-                require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
-                dbDelta($sql);
-                
-         define('PLUG_URLPATH', WP_CONTENT_URL.'/plugins/'.plugin_basename( dirname(__FILE__)) );
+             define('PLUG_URLPATH', WP_CONTENT_URL.'/plugins/'.plugin_basename( dirname(__FILE__)) );
 	     $plugin_dir = PLUG_URLPATH;
 
-		 $myFile = $plugin_dir."/namedays.import";
+	     $myFile = $plugin_dir."/namedays.import";
 
-			$fh = fopen($myFile, 'r');
-			#while (!feof($fh)) {
-			#  $theData .= fread($fh, 8192);
-			#}
-			#fclose($fh);
+   	     $fh = fopen($myFile, 'r');
 
-			if ($fh) {
- 			   while (!feof($fh)) {
-  			      $buffer = fgets($fh, 4096);
-					$q=explode("|",$buffer);
-    			   $query="insert into $table values($q[0],$q[1],'$q[2]','$q[3]','$q[4]','$q[5]');";
-    			   $wpdb->query($query);
- 			}       
+	     if ($fh) {
+ 		   while (!feof($fh)) {
+  	             $buffer = fgets($fh, 4096);
+		     $q=explode("|",$buffer);
+    		     $query="insert into $table values($q[0],$q[1],'$q[2]','$q[3]','$q[4]','$q[5]');";
+    		     $wpdb->query($query);
+ 		      }       
   
     		fclose($fh);
-}}
+         }
+}
   
-#Checks for valid languages
+//  Checks for valid languages
 $query = "select distinct(lang) from $DB order by lang";
 $res=$wpdb->get_results($query,ARRAY_N);
-
-
-
 
 $err = mysql_error();
 if($err) { echo "Load failed: " . $query . "<BR>" . $err; }
@@ -223,13 +210,8 @@ if (!is_array($v)) {
 				$v = unserialize($v);
 			}
 
-#$month=date("m");
-#$day=date("d");
 if (!isset($day)) return;
-#$day=24;
-#$month=12;
 $query = "SELECT names FROM $DB where day=$day AND month=$month AND lang='$v[nameday_lang]';";
-#echo $query;
 
 $res=$wpdb->get_row($query,ARRAY_N);
 $err = mysql_error();
@@ -287,10 +269,6 @@ function nameday_install () {
 		 $myFile = $plugin_dir."/namedays.import";
 
 			$fh = fopen($myFile, 'r');
-			#while (!feof($fh)) {
-			#  $theData .= fread($fh, 8192);
-			#}
-			#fclose($fh);
 
 			if ($fh) {
  			   while (!feof($fh)) {
