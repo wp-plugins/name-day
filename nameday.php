@@ -185,10 +185,10 @@ if($err) { echo "Load failed: " . $query . "<BR>" . $err; }
 <br /><br />
 <div>If you want any special html code or other text to appear before and after the list of names use this fields.</div>
 <div >Pre<small> ([&lt;font color=blue>)</small></div>
-		<div >&nbsp; <input text="text" size="20" name="nameday_pre" type="text" value="<?php $str = $v['nameday_pre']; echo stripslashes($str); ?>" /></div>
+		<div >&nbsp; <input text="text" size="50" name="nameday_pre" type="text" value="<?php $str = $v['nameday_pre']; echo stripslashes($str); ?>" /></div>
 
 	<div >Post<small> (&lt;/font>])</small></div>
-		<div >&nbsp; <input text="text" size="20" name="nameday_post" type="text" value="<?php $str = $v['nameday_post']; echo stripslashes($str); ?>" /></div>
+		<div >&nbsp; <input text="text" size="50" name="nameday_post" type="text" value="<?php $str = $v['nameday_post']; echo stripslashes($str); ?>" /></div>
 <br /><br /
 
 <div><? 		echo "<br>Example: ".$v['nameday_pre']."Mary, Peter".$v['nameday_post']."<br>"; ?></div>
