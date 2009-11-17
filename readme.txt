@@ -3,18 +3,21 @@ Contributors: thomaz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3625309
 Tags: nameday, namnsdag, posts
 Requires at least: 2.7.0
-Tested up to: 2.7.1
-Stable tag: 0.5
+Tested up to: 2.8.6
+Stable tag: 1.0.4
+
 
 Print the current name day.
 
-Currenly only support for the Swedish name Calendar.
-
 == Description ==
 
-Prints the current nameday (namnsdag in swedish)
+Print the current name day.
 
-== Currently only Swedish Name days =
+Currenly supports Namedays for Sweden (Namnsdagar), Norway (Navnedager) & Denmark (Navnedager) 
+
+
+
+== Missing country? =
 
 * If you have a commasepareted file for namedays for your country, please
 * contact me and I will add it.
@@ -28,7 +31,7 @@ Prints the current nameday (namnsdag in swedish)
 4. Edit your theme's php files and insert the following code where you want the name to appear.
    
 
-    &lt;php? if (function_exists('print_nameday')) { print_nameday(); } ?&gt;
+<pre><code>    &lt;? if (function_exists('print_nameday')) { print_nameday(); } ?&gt; </code></pre>
 
 
 == Frequently Asked Questions ==
@@ -39,4 +42,19 @@ Yes, just send me a datafile
 
 
 
+== Screenshots ==
+
+1. Settings page
+2. Appearance in blog
+
+== Changelog ==
+
+= 1.0.3 =
+Cosmetic changes in settings page
+
+= 1.0.2 =
+1.0.2 Added support for Danish and Norwegian namedays
+
+= 1.0.1 =
+Removed dependencies to pluggable.php, which casued compat. problems.
 
