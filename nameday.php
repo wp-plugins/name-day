@@ -22,8 +22,8 @@ Author URI: http://www.liajnad.se
 
 */
 
-require_once(ABSPATH . 'wp-includes/streams.php');
-require_once(ABSPATH . 'wp-includes/gettext.php');
+#require_once(ABSPATH . 'wp-includes/streams.php');
+#require_once(ABSPATH . 'wp-includes/gettext.php');
 
 
 $DB_PREFIX=$wpdb->prefix;
