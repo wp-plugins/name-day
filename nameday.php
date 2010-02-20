@@ -4,8 +4,8 @@ Plugin Name: Name Day
 Description: Name Day, prints the name day (Swedish namnsdag). See the readme for how to configure.
 Version: 1.0.4
 Author: Thomas L
-Plugin URI: http://www.liajnad.se/nameday
-Author URI: http://www.liajnad.se
+Plugin URI: http://dev.liajnad.se/nameday
+Author URI: http://dev.liajnad.se
 */
 
 /*  
