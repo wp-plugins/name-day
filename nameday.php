@@ -176,19 +176,6 @@ function nameday_install () {
         }
 }
 
-add_filter( 'plugin_action_links', 'tz_nameday_plugin_actions', 10, 2 );
-function tz_nameday_plugin_actions($links, $file){
-        static $this_plugin;
-
-        if( !$this_plugin ) $this_plugin = plugin_basename(__FILE__);
-
-        if( $file == $this_plugin ){
-                $settings_link = '<a href="options-general.php?page=name-day/nameday.php">' . __('Settings') . '</a>';
-                $links = array_merge( array($settings_link), $links); // before other links
-        }
-        return $links;
-}
-
 
 class NameDay extends NameDay_SWGPluginFramework {
 
