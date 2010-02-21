@@ -3,8 +3,8 @@ Contributors: thomaz
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3625309
 Tags: nameday, namnsdag, posts
 Requires at least: 2.7.0
-Tested up to: 2.9.1
-Stable tag: 1.0.4
+Tested up to: 2.9.2
+Stable tag: 1.0.5
 
 
 Print the current name day.
@@ -48,6 +48,9 @@ Yes, just send me a datafile
 2. Appearance in blog
 
 == Changelog ==
+
+= 1.0.5 = 
+Redesign settings page
 
 = 1.0.3 =
 Cosmetic changes in settings page
